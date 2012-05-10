@@ -1,0 +1,23 @@
+//3dplat
+
+public class world {
+
+    Block[][][] blocks;
+
+    public world() {
+
+    }
+
+    public void loadFromFile(String name) {
+	try {
+
+	} catch(Exception e) {
+	    System.out.println("Cannot load from file");
+	}
+    }
+
+    public Block getBlock(int x, int y, int z) {
+	return blocks[x][y][z];
+    }
+
+}
