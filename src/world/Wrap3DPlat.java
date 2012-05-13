@@ -36,7 +36,7 @@ public class Wrap3DPlat extends JPanel
 	BG.addChild( new Floor().getBG() );
 
 	//addStuffBELOW
-	//BG.addChild( BG );
+	//BG.addChild( Shape3D );
 	initUserControls();
 	BG.compile();
     }
