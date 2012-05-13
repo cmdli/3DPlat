@@ -6,7 +6,7 @@ public class plat extends JFrame
 {
     public plat()
     {
-	super("3DPlAT");
+	super("3DPLAT");
 	Container c = getContentPane();
 	c.setLayout(new BoarderLayout());
 	Wrap3DPlat w3d = new Wrap3DPlat();
