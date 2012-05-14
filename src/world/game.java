@@ -6,10 +6,13 @@ public class game {
     double oldTick;
     player pl;
     keyinput keyin;
+    Renderer scr;
 
     public game() {
 	cur = new world();
 	pl = new player();
+	scr = new Renderer();
+	cur.loadFromFile("world.txt");
     }
 
     public void tick() {
@@ -19,7 +22,7 @@ public class game {
 	    return;
 	oldTick = getTime();
 
-	
+	scr.blit(this);
 
     }
 
