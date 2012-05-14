@@ -1,0 +1,27 @@
+//3dplat
+
+import static org.lwjgl.opengl.GL11.*;
+
+public class Renderer {
+
+    private int verBuf;
+    private int 
+    
+    public Renderer() {
+
+    }
+
+    public void blit(game g) {
+	world w = g.cur;
+
+	for(Block b : w.blocks) {
+	    drawBlock(b);
+	}
+	
+    }
+
+    public void drawBlock(Block b) {
+	
+    }
+
+}

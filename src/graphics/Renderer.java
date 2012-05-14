@@ -1,0 +1,56 @@
+//3dplat
+
+import static org.lwjgl.opengl.GL11.*;
+
+public class Renderer {
+
+    private int verBuf;
+    private int 
+    
+    public Renderer() {
+	try {
+	    Display.setDisplayMode(new DisplayMode(800,600));
+	    Display.create();
+	} catch (LWJGLException e) {
+	    e.printStackTrace();
+	    System.exit(0);
+	}
+ 
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+	glOrtho(0, 800, 0, 600, 1, -1);
+	glMatrixMode(GL_MODELVIEW);
+    }
+
+    public void blit(game g) {
+
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	glColor3f(0.5f,0.5f,1.0f);
+
+	world w = g.cur;
+
+	for(Block b : w.blocks) {
+	    drawBlock(b);
+	}
+
+	Display.update();
+	
+    }
+
+    public void drawBlock(Block b) {
+	glBegin(GL_POLYGON);
+
+	glVertex3f(b.loc.x,b.loc.y,b.loc.z);
+	glVertex3f(b.loc.x+b.size.x,b.loc.y,b.loc.z);
+	glVertex3f(b.loc.x,b.loc.y,b.loc.z+b.size.z);
+	glVertex3f(b.loc.x+b.size.x,b.loc.y,b.loc.z+b.size.z);
+
+	glVertex3f(b.loc.x,b.loc.y+b.size.y,b.loc.z);
+	glVertex3f(b.loc.x+b.size.x,b.loc.y+b.size.y,b.loc.z);
+	glVertex3f(b.loc.x,b.loc.y+b.size.y,b.loc.z+b.size.z);
+	glVertex3f(b.loc.x+b.size.x,b.loc.y+b.size.y,b.loc.z+b.size.z);
+
+	glEnd();
+    }
+
+}
