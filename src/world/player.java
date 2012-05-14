@@ -28,7 +28,7 @@ public class player extends entity {
 	    vel.x += /*MAGIC NUMBER*/1.0/*MAGIC NUMBER*/;
 	}
 
-	acc.y = -G;
+	acc.y = (float) -G;
 
 	vectorAcc(vel,acc,time);
 

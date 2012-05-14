@@ -1,3 +1,8 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.List;
+
 //3dplat
 
 public class world {
@@ -23,19 +28,19 @@ public class world {
 		tmp.add(loadBlock(line));
 	    }
 
-	    blocks = tmp.toArray();
+	    blocks = (Block[]) tmp.toArray();
 	    
 	    //Old image-based code
 	    /*BufferedImage in = ImageIO.read(new File(name));
 
 	    int[] src = ((DataBufferInt) in.getRaster().getDataBuffer()).getData();
 
-	    blocks = new Block[in.getWidth()][/*MAGIC NUMBER*/10/*MAGIC NUMBER*//*][in.getHeight()];
+	    blocks = new Block[in.getWidth()][/*MAGIC NUMBER10/*MAGIC NUMBER*//*][in.getHeight()];
 
 	    for(int x = 0; x < in.getWidth(); x++) {
 		for(int z = 0; z < in.getHeight(); z++) {
 		    blocks[x][0][z] = loadBlock(src[x+y*in.getWidth()]);
-		    for(int y = 0; y < /*MAGIC NUMBER*/10/*MAGIC NUMBER*//*; y++) {
+		    for(int y = 0; y < /*MAGIC NUMBER10/*MAGIC NUMBER*//*; y++) {
 			blocks[x][y][z] = new EmptyBlock();
 		    }
 		}
@@ -51,7 +56,7 @@ public class world {
 	
 	Block b = new Block();
 
-	if(vals.length() < 6) 
+	if(vals.length < 6) 
 	    return b;
 
 	b.loc.x = Integer.parseInt(vals[0]);
@@ -71,10 +76,5 @@ public class world {
 	return new EmptyBlock();*/
     }
 
-    public Block getBlock(int x, int y, int z) {
-	if(blocks == null)
-	    return null;
-	return blocks[x][y][z];
-    }
 
 }

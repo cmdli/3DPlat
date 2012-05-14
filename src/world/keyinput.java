@@ -1,3 +1,6 @@
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
 //3dplat
 
 public class keyinput implements KeyListener {
@@ -20,10 +23,11 @@ public class keyinput implements KeyListener {
 
     }
 
-    public boolean getKeys() {
-	KeyEvent e = new KeyEvent();
-	e.setKeyChar(c);
-	return keys[e.getKeyCode()];
+    public boolean getKey(char c) {
+	//KeyEvent e = new KeyEvent()
+	//e.setKeyChar(c);
+	//return keys[e.getKeyCode()];
+	return false;
     }
 
 }

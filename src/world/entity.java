@@ -19,6 +19,7 @@ public class entity {
      *-5--Down-
      */
     boolean[] move;
+    vector vel;
 
     public entity() {
 
@@ -36,10 +37,7 @@ public class entity {
 
     public void collide(entity e, Block[] b, double rest) {
 
-	for(boolean b : e.move) {
-	    b = true;
-	}
-
+	
 	for(int i = 0; i < b.length; i++) {
 
 	    if(e.loc.z-b[i].loc.z < b[i].size.z || e.loc.z+e.size.z - b[i].loc.z < b[i].size.z) {

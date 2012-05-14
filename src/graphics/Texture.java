@@ -1,4 +1,8 @@
+import org.lwjgl.opengl.GL11;
+
 //3dplat
+
+
 
 public class Texture {
 
@@ -11,7 +15,7 @@ public class Texture {
     }
 
     public void bind() {
-	glBindTexture(target,id);
+	GL11.glBindTexture(target,id);
     }
 
 }

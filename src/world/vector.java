@@ -2,8 +2,8 @@
 
 public class vector {
 
-    double x = 0.0;
-    double y = 0.0;
-    double z = 0.0;
+    float x = 0f;
+    float y = 0f;
+    float z = 0f;
 
 }

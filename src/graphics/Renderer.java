@@ -2,10 +2,11 @@
 
 import static org.lwjgl.opengl.GL11.*;
 
-public class Renderer {
+import org.lwjgl.LWJGLException;
+import org.lwjgl.opengl.Display;
+import org.lwjgl.opengl.DisplayMode;
 
-    private int verBuf;
-    private int 
+public class Renderer {
     
     public Renderer() {
 	try {
@@ -23,6 +24,8 @@ public class Renderer {
     }
 
     public void blit(game g) {
+    	
+    	System.out.print("Blitting!");
 
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glColor3f(0.5f,0.5f,1.0f);

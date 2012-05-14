@@ -6,10 +6,12 @@ public class game {
     double oldTick;
     player pl;
     keyinput keyin;
+    Renderer scr;
 
     public game() {
 	cur = new world();
 	pl = new player();
+	scr = new Renderer();
     }
 
     public void tick() {
@@ -19,7 +21,7 @@ public class game {
 	    return;
 	oldTick = getTime();
 
-	
+	scr.blit(this);
 
     }
 
