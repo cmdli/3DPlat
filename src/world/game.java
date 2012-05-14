@@ -27,8 +27,8 @@ public class game {
 	return System.nanoTime()/1000000000.0;
     }
 
-    public Keys getKeys() {
-	return keyin.getKeys();
+    public boolean getKey(char c) {
+	return keyin.getKey(c);
     }
 
 }

@@ -1,5 +1,5 @@
 //3dplat
 
-public class Block {
-
+public class Block extends entity {
+    
 }

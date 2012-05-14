@@ -5,7 +5,7 @@ public class keyinput implements KeyListener {
     boolean[] keys = new boolean[65536];
 
     public keyinput() {
-
+	
     }
 
     public void keyPressed(KeyEvent e) {
@@ -18,6 +18,12 @@ public class keyinput implements KeyListener {
 
     public void keyTyped(KeyEvent e) {
 
+    }
+
+    public boolean getKeys() {
+	KeyEvent e = new KeyEvent();
+	e.setKeyChar(c);
+	return keys[e.getKeyCode()];
     }
 
 }

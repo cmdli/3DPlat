@@ -15,11 +15,24 @@ public class player extends entity {
 
     public void tick(game g, double time) {
 
-	Keys k = g.getKeys();
+	if(g.getKey('w')){
+	    vel.z += /*MAGIC NUMBER*/1.0/*MAGIC NUMBER*/;
+	}
+	if(g.getKey('a')) {
+	    vel.x -= /*MAGIC NUMBER*/1.0/*MAGIC NUMBER*/;
+	}
+	if(g.getKey('s')) {
+	    vel.z -= /*MAGIC NUMBER*/1.0/*MAGIC NUMBER*/;
+	}
+	if(g.getKey('d')) {
+	    vel.x += /*MAGIC NUMBER*/1.0/*MAGIC NUMBER*/;
+	}
 
 	acc.y = -G;
 
 	vectorAcc(vel,acc,time);
+
+	collide(this,g.cur.blocks,0.0);
 
 	vectorAcc(loc,vel,time);
 	
