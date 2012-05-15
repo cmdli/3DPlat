@@ -22,8 +22,15 @@ public class game {
 	    return;
 	oldTick = getTime();
 
+	
+	
+
 	scr.blit(this);
 
+    }
+
+    public void close() {
+	scr.close();
     }
 
     public double getTime() {

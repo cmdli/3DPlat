@@ -23,23 +23,23 @@ public class world {
 		tmp.add(loadBlock(line));
 	    }
 
-	    blocks = tmp.toArray();
+	    blocks = (Block[])tmp.toArray();
 	    
 	    //Old image-based code
-	    /*BufferedImage in = ImageIO.read(new File(name));
+	    /**BufferedImage in = ImageIO.read(new File(name));
 
 	    int[] src = ((DataBufferInt) in.getRaster().getDataBuffer()).getData();
 
-	    blocks = new Block[in.getWidth()][/*MAGIC NUMBER*/10/*MAGIC NUMBER*//*][in.getHeight()];
+	    blocks = new Block[in.getWidth()][/*MAGIC NUMBER10/*MAGIC NUMBER*//*][in.getHeight()];
 
 	    for(int x = 0; x < in.getWidth(); x++) {
 		for(int z = 0; z < in.getHeight(); z++) {
 		    blocks[x][0][z] = loadBlock(src[x+y*in.getWidth()]);
-		    for(int y = 0; y < /*MAGIC NUMBER*/10/*MAGIC NUMBER*//*; y++) {
+		    for(int y = 0; y < /*MAGIC NUMBER10/*MAGIC NUMBER*//*; y++) {
 			blocks[x][y][z] = new EmptyBlock();
 		    }
 		}
-	    }*/
+		}*/
 	} catch(Exception e) {
 	    System.out.println("Cannot load from file");
 	}

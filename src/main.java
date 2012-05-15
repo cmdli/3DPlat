@@ -9,9 +9,10 @@ public class main {
     }
 
     public void start() {
-	while(running) {
+	while(!Display.isCloseRequested()) {
 	    g.tick();
 	}
+	g.close();
     }
 
     public static void main(String[] args) {

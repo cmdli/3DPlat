@@ -3,9 +3,6 @@
 import static org.lwjgl.opengl.GL11.*;
 
 public class Renderer {
-
-    private int verBuf;
-    private int 
     
     public Renderer() {
 	try {
@@ -13,7 +10,6 @@ public class Renderer {
 	    Display.create();
 	} catch (LWJGLException e) {
 	    e.printStackTrace();
-	    System.exit(0);
 	}
  
 	glMatrixMode(GL_PROJECTION);
@@ -51,6 +47,10 @@ public class Renderer {
 	glVertex3f(b.loc.x+b.size.x,b.loc.y+b.size.y,b.loc.z+b.size.z);
 
 	glEnd();
+    }
+
+    public void close() {
+	Display.destroy();
     }
 
 }
