@@ -12,6 +12,10 @@ public class game {
 	cur = new world();
 	pl = new player();
 	scr = new Renderer();
+<<<<<<< HEAD
+=======
+	cur.loadFromFile("world.txt");
+>>>>>>> de219aef0f8d0f65c18022ba057f8d3f1c89c5dc
     }
 
     public void tick() {
