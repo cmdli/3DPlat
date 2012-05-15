@@ -8,6 +8,7 @@ public class keyinput extends Thread {//IDK If we need thread here or nor?
     }
     public void run(){
 	while(true){
+	    Keyboard.pull();
 	    while(Keyboard.next()){
 		if(Keyboard.getEventKeyState()){
 		    if(Keyboard.getEventKey() == Keyboard.KEY_UP ||
