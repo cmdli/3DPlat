@@ -1,3 +1,7 @@
+import org.lwjgl.LWJGLException;
+import org.lwjgl.opengl.Display;
+import org.lwjgl.opengl.DisplayMode;
+
 //3dplat
 
 public class game {
@@ -8,11 +12,17 @@ public class game {
     keyinput keyin;
     Renderer scr;
 
-    public game() {
+    public game() throws LWJGLException {
 	cur = new world();
-	pl = new player();
-	scr = new Renderer();
 	cur.loadFromFile("world.txt");
+	pl = new player();
+	try {
+		scr = new Renderer();
+	} catch (Exception e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	
     }
 
     public void tick() {
@@ -37,8 +47,8 @@ public class game {
 	return System.nanoTime()/1000000000.0;
     }
 
-    public boolean getKey(char c) {
-	return keyin.getKey(c);
-    }
+    /*public boolean getKey(char c) {
+	return getKey(c);
+    }*/
 
 }

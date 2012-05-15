@@ -2,9 +2,16 @@
 
 import static org.lwjgl.opengl.GL11.*;
 
+<<<<<<< HEAD
+=======
+import org.lwjgl.LWJGLException;
+import org.lwjgl.opengl.Display;
+import org.lwjgl.opengl.DisplayMode;
+
+>>>>>>> 3cfde8c45d552fcf505cdc4e8c243abce6c01dfb
 public class Renderer {
     
-    public Renderer() {
+    public Renderer() throws Exception {
 	try {
 	    Display.setDisplayMode(new DisplayMode(800,600));
 	    Display.create();
@@ -19,6 +26,8 @@ public class Renderer {
     }
 
     public void blit(game g) {
+    	
+    	System.out.print("Blitting!");
 
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glColor3f(0.5f,0.5f,1.0f);

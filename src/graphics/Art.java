@@ -3,7 +3,7 @@
 public class Art {
     
 
-    public static init() {
+    public static void init() {
 	
     }
 

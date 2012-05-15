@@ -1,29 +1,49 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
 //3dplat
 
 public class world {
-
+    ArrayList<Block> temp;
     Block[] blocks;
 
-    public world() {
-	blocks = null;
-    }
+    public world() {}
 
     public void loadFromFile(String name) {
 
 	try {
 
-	    BufferedReader in = new BufferedReader(new FileReader(name));
-
-	    //Using a List here so file is only read once;
-	    //tmp will be transferred into blocks
-	    List<Block> tmp = new ArrayList<Block>();
-
-	    String line = "";
-	    while((line = in.readLine()) != null) {
-		tmp.add(loadBlock(line));
+	    BufferedReader in = new BufferedReader(new FileReader("world.txt"));
+	    Scanner scan = new Scanner(in);
+	    temp = new ArrayList<Block>();
+	    while(scan.hasNextInt()){
+	    	try{temp.add(loadBlock(scan.nextInt(),scan.nextInt(),scan.nextInt(), scan.nextInt(),scan.nextInt(),scan.nextInt()));}
+		catch(Exception e){}
 	    }
+<<<<<<< HEAD
 
 	    blocks = (Block[])tmp.toArray();
+=======
+	    blocks = new Block[temp.size()];
+	    for(int i = 0; i<temp.size();i++){
+	    	blocks[i] = temp.get(i);
+	    }
+	    //Using a List here so file is only read once;
+	   //tmp will be transferred into blocks
+//	    List<Block> tmp = new ArrayList<Block>();
+//
+	//    String line = "";
+	  //  while((line = in.readLine()) != null) {
+		//tmp.add(loadBlock(line));
+	    //}
+
+	    //blocks = (Block[]) tmp.toArray();
+	    
+	    
+>>>>>>> 3cfde8c45d552fcf505cdc4e8c243abce6c01dfb
 	    
 	    //Old image-based code
 	    /**BufferedImage in = ImageIO.read(new File(name));
@@ -42,7 +62,9 @@ public class world {
 		}*/
 	} catch(Exception e) {
 	    System.out.println("Cannot load from file");
+	    e.printStackTrace();
 	}
+
     }
 
     private Block loadBlock(String input) {
@@ -51,7 +73,7 @@ public class world {
 	
 	Block b = new Block();
 
-	if(vals.length() < 6) 
+	if(vals.length < 6) 
 	    return b;
 
 	b.loc.x = Integer.parseInt(vals[0]);
@@ -70,11 +92,24 @@ public class world {
 	}
 	return new EmptyBlock();*/
     }
+    private Block loadBlock(int a, int g, int c, int d, int e, int f) {
+    	Block b = new Block();
+	b.loc.x = a;
+	b.loc.y = g;
+	b.loc.z = c;
+	b.size.x = d;
+	b.size.y = e;
+	b.size.z = f;
+	return b;
 
-    public Block getBlock(int x, int y, int z) {
-	if(blocks == null)
-	    return null;
-	return blocks[x][y][z];
+	//Old Image-based code
+	/*
+	switch(col) {
+	case 0x000000:
+	    return new SolidBlock();
+	}
+	return new EmptyBlock();*/
     }
+
 
 }
