@@ -1,47 +1,109 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
 //3dplat
 
 public class world {
+	ArrayList<Block> temp;
+    Block[] blocks;
 
-    Block[][][] blocks;
-
-    public world() {
-	blocks = null;
-    }
+    public world() {}
 
     public void loadFromFile(String name) {
 
 	try {
-	    BufferedImage in = ImageIO.read(new File(name));
+
+	    BufferedReader in = new BufferedReader(new FileReader("C:/Users/Gino/gits/src/world.txt"));
+	    Scanner scan = new Scanner(in);
+	    temp = new ArrayList<Block>();
+	    try{while(scan.hasNextInt()){
+	    	temp.add(loadBlock(scan.nextInt(),scan.nextInt(),scan.nextInt(), scan.nextInt(),scan.nextInt(),scan.nextInt()));
+	    }}
+	    catch(Exception e){}
+	    for(int i = 0; i<temp.size();i++){
+	    	blocks[i] = temp.get(i);
+	    }
+	    //Using a List here so file is only read once;
+	   //tmp will be transferred into blocks
+//	    List<Block> tmp = new ArrayList<Block>();
+//
+	//    String line = "";
+	  //  while((line = in.readLine()) != null) {
+		//tmp.add(loadBlock(line));
+	    //}
+
+	    //blocks = (Block[]) tmp.toArray();
+	    
+	    
+	    
+	    //Old image-based code
+	    /*BufferedImage in = ImageIO.read(new File(name));
 
 	    int[] src = ((DataBufferInt) in.getRaster().getDataBuffer()).getData();
 
-	    blocks = new Block[in.getWidth()][/*MAGIC NUMBER*/10/*MAGIC NUMBER*/][in.getHeight()];
+	    blocks = new Block[in.getWidth()][/*MAGIC NUMBER10/*MAGIC NUMBER*//*][in.getHeight()];
 
 	    for(int x = 0; x < in.getWidth(); x++) {
 		for(int z = 0; z < in.getHeight(); z++) {
 		    blocks[x][0][z] = loadBlock(src[x+y*in.getWidth()]);
-		    for(int y = 0; y < /*MAGIC NUMBER*/10/*MAGIC NUMBER*/; y++) {
+		    for(int y = 0; y < /*MAGIC NUMBER10/*MAGIC NUMBER*//*; y++) {
 			blocks[x][y][z] = new EmptyBlock();
 		    }
 		}
-	    }
+	    }*/
 	} catch(Exception e) {
 	    System.out.println("Cannot load from file");
+	    e.printStackTrace();
 	}
+
     }
 
-    private Block loadBlock(int col) {
+    private Block loadBlock(String input) {
+
+	String[] vals = input.split(" ");
+	
+	Block b = new Block();
+
+	if(vals.length < 6) 
+	    return b;
+
+	b.loc.x = Integer.parseInt(vals[0]);
+	b.loc.y = Integer.parseInt(vals[1]);
+	b.loc.z = Integer.parseInt(vals[2]);
+	b.size.x = Integer.parseInt(vals[3]);
+	b.size.y = Integer.parseInt(vals[4]);
+	b.size.z = Integer.parseInt(vals[5]);
+	return b;
+
+	//Old Image-based code
+	/*
 	switch(col) {
 	case 0x000000:
 	    return new SolidBlock();
 	}
-	return new EmptyBlock();
+	return new EmptyBlock();*/
+    }
+    private Block loadBlock(int a, int g, int c, int d, int e, int f) {
+    	Block b = new Block();
+	b.loc.x = a;
+	b.loc.y = g;
+	b.loc.z = c;
+	b.size.x = d;
+	b.size.y = e;
+	b.size.z = f;
+	return b;
+
+	//Old Image-based code
+	/*
+	switch(col) {
+	case 0x000000:
+	    return new SolidBlock();
+	}
+	return new EmptyBlock();*/
     }
 
-    public Block getBlock(int x, int y, int z) {
-	if(blocks == null)
-	    return null;
-	return blocks[x][y][z];
-    }
 
 }

@@ -2,33 +2,43 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 //3dplat
 
 public class world {
-
+    ArrayList<Block> temp;
     Block[] blocks;
 
-    public world() {
-	blocks = null;
-    }
+    public world() {}
 
     public void loadFromFile(String name) {
 
 	try {
 
-	    BufferedReader in = new BufferedReader(new FileReader(name));
-
+	    BufferedReader in = new BufferedReader(new FileReader("world.txt"));
+	    Scanner scan = new Scanner(in);
+	    temp = new ArrayList<Block>();
+	    while(scan.hasNextInt()){
+	    	try{temp.add(loadBlock(scan.nextInt(),scan.nextInt(),scan.nextInt(), scan.nextInt(),scan.nextInt(),scan.nextInt()));}
+		catch(Exception e){}
+	    }
+	    blocks = new Block[temp.size()];
+	    for(int i = 0; i<temp.size();i++){
+	    	blocks[i] = temp.get(i);
+	    }
 	    //Using a List here so file is only read once;
 	   //tmp will be transferred into blocks
-	    List<Block> tmp = new ArrayList<Block>();
+//	    List<Block> tmp = new ArrayList<Block>();
+//
+	//    String line = "";
+	  //  while((line = in.readLine()) != null) {
+		//tmp.add(loadBlock(line));
+	    //}
 
-	    String line = "";
-	    while((line = in.readLine()) != null) {
-		tmp.add(loadBlock(line));
-	    }
-
-	    blocks = (Block[]) tmp.toArray();
+	    //blocks = (Block[]) tmp.toArray();
+	    
+	    
 	    
 	    //Old image-based code
 	    /*BufferedImage in = ImageIO.read(new File(name));
@@ -47,6 +57,7 @@ public class world {
 	    }*/
 	} catch(Exception e) {
 	    System.out.println("Cannot load from file");
+	    e.printStackTrace();
 	}
 
     }
@@ -66,6 +77,24 @@ public class world {
 	b.size.x = Integer.parseInt(vals[3]);
 	b.size.y = Integer.parseInt(vals[4]);
 	b.size.z = Integer.parseInt(vals[5]);
+	return b;
+
+	//Old Image-based code
+	/*
+	switch(col) {
+	case 0x000000:
+	    return new SolidBlock();
+	}
+	return new EmptyBlock();*/
+    }
+    private Block loadBlock(int a, int g, int c, int d, int e, int f) {
+    	Block b = new Block();
+	b.loc.x = a;
+	b.loc.y = g;
+	b.loc.z = c;
+	b.size.x = d;
+	b.size.y = e;
+	b.size.z = f;
 	return b;
 
 	//Old Image-based code

@@ -16,7 +16,12 @@ public class game {
 	cur = new world();
 	cur.loadFromFile("world.txt");
 	pl = new player();
-	scr = new Renderer();
+	try {
+		scr = new Renderer();
+	} catch (Exception e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
 	
     }
 

@@ -8,7 +8,7 @@ import org.lwjgl.opengl.DisplayMode;
 
 public class Renderer {
     
-    public Renderer() {
+    public Renderer() throws Exception {
 	try {
 	    Display.setDisplayMode(new DisplayMode(800,600));
 	    Display.create();
