@@ -1,33 +1,25 @@
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+import org.lwjgl.input.Keyboard;
 
-//3dplat
+public class keyinput extends Thread {
 
-public class keyinput implements KeyListener {
-
-    boolean[] keys = new boolean[65536];
-
-    public keyinput() {
-	
+    public keyinput(){
+	create();
+	enableRepeatEvents(true);
     }
+    public void run(){
+	while(true){
+	    poll();
+	    if(isKeyDown(KEY_UP)    || isKeyDown(KEY_W)){/* move forward*/}
+	    if(isKeyDown(KEY_DOWN)   || isKeyDown(KEY_S)){/*move backwards*/}
+	    if(isKeyDown(Key_LEFT)  || isKeyDown(KEY_A)){/*turn left*/}
+	    if(isKeyDown(Key_RIGHT) || isKeyDown(KEY_F)){/*turn right*/}
+            if(isKeyDown(Key_SEMICOLON))                
+		{/*CLOSE GAME*/
+		destroy();
+		break;
+		}
 
-    public void keyPressed(KeyEvent e) {
-	keys[e.getKeyCode()] = true;
-    }
-
-    public void keyReleased(KeyEvent e) {
-	keys[e.getKeyCode()] = false;
-    }
-
-    public void keyTyped(KeyEvent e) {
-
-    }
-
-    public boolean getKey(char c) {
-	//KeyEvent e = new KeyEvent()
-	//e.setKeyChar(c);
-	//return keys[e.getKeyCode()];
-	return false;
+	}
     }
 
 }
