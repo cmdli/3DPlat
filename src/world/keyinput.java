@@ -1,14 +1,15 @@
+import org.lwjgl.LWJGLException;
 import org.lwjgl.input.Keyboard;
 
 public class keyinput extends Thread {//IDK If we need thread here or nor?
 
-    public keyinput(){
+    public keyinput() throws LWJGLException{
 	Keyboard.create();
 	Keyboard.enableRepeatEvents(true);
     }
     public void run(){
 	while(true){
-	    Keyboard.pull();
+	    Keyboard.poll();
 	    while(Keyboard.next()){
 		if(Keyboard.getEventKeyState()){
 		    if(Keyboard.getEventKey() == Keyboard.KEY_UP ||

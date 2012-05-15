@@ -1,3 +1,5 @@
+import org.lwjgl.LWJGLException;
+
 //3dplat
 
 public class main {
@@ -5,7 +7,7 @@ public class main {
     boolean running;
     game g;
 
-    public main() {
+    public main() throws LWJGLException {
 	running = true;
 	g = new game();
     }
@@ -17,7 +19,7 @@ public class main {
 	}
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws LWJGLException {
 	main m = new main();
 	m.start();
     }

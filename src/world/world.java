@@ -20,7 +20,7 @@ public class world {
 	    BufferedReader in = new BufferedReader(new FileReader(name));
 
 	    //Using a List here so file is only read once;
-	    //tmp will be transferred into blocks
+	   //tmp will be transferred into blocks
 	    List<Block> tmp = new ArrayList<Block>();
 
 	    String line = "";
@@ -48,6 +48,7 @@ public class world {
 	} catch(Exception e) {
 	    System.out.println("Cannot load from file");
 	}
+
     }
 
     private Block loadBlock(String input) {
