@@ -1,25 +1,36 @@
 import org.lwjgl.input.Keyboard;
 
-public class keyinput extends Thread {
+public class keyinput extends Thread {//IDK If we need thread here or nor?
 
     public keyinput(){
-	create();
-	enableRepeatEvents(true);
+	Keyboard.create();
+	Keyboard.enableRepeatEvents(true);
     }
     public void run(){
 	while(true){
-	    poll();
-	    if(isKeyDown(KEY_UP)    || isKeyDown(KEY_W)){/* move forward*/}
-	    if(isKeyDown(KEY_DOWN)   || isKeyDown(KEY_S)){/*move backwards*/}
-	    if(isKeyDown(Key_LEFT)  || isKeyDown(KEY_A)){/*turn left*/}
-	    if(isKeyDown(Key_RIGHT) || isKeyDown(KEY_F)){/*turn right*/}
-            if(isKeyDown(Key_SEMICOLON))                
-		{/*CLOSE GAME*/
-		destroy();
-		break;
+	    while(Keyboard.next()){
+		if(Keyboard.getEventKeyState()){
+		    if(Keyboard.getEventKey() == Keyboard.KEY_UP ||
+		       Keyboard.getEventKey() == Keyboard.KEY_W)
+			{/*move forward*/}
+		    if(Keyboard.getEventKey() == Keyboard.KEY_DOWN ||
+		       Keyboard.getEventKey() == Keyboard.KEY_S)
+			{/*move BACK*/}
+		    if(Keyboard.getEventKey() == Keyboard.KEY_LEFT ||
+		       Keyboard.getEventKey() == Keyboard.KEY_A)
+			{/*move LEFT*/}
+		    if(Keyboard.getEventKey() == Keyboard.KEY_RIGHT ||
+		       Keyboard.getEventKey() == Keyboard.KEY_D)
+			{/*Move Right*/}
+		    if(Keyboard.getEventKey() == Keyboard.KEY_SEMICOLON)
+			{/*EXIT*/}
+		    if(Keyboard.getEventKey() == Keyboard.KEY_SPACE)       
+			{/*jump?*/}
 		}
 
+	    }
+	    
 	}
     }
-
+    
 }
