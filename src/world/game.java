@@ -27,16 +27,16 @@ public class game {
 
     public void tick() {
 	
-	double time = getTime();
-	if(time - oldTick < /*MAGIC NUMBER*/0.05/*MAGIC NUMBER*/)
-	    return;
-	oldTick = getTime();
+//	double time = getTime();
+//	if(time - oldTick < /*MAGIC NUMBER*/0.005/*MAGIC NUMBER*/)
+//	    return;
+//	oldTick = getTime();
 
 	
 	
-
+	scr.camera();
 	scr.blit(this);
-
+	
     }
 
     public void close() {

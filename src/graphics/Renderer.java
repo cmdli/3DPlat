@@ -4,10 +4,19 @@ import static org.lwjgl.opengl.GL11.*;
 import org.lwjgl.LWJGLException;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
+import org.lwjgl.opengl.GL11;
 
 
 public class Renderer {
-    
+	float xpos = 0f;
+	float ypos = 0f;
+	float zpos = 0f;
+	float xrot = 0f;
+	float yrot = 0f;
+	float angle = 0.0f;
+    private static final int width = 800;
+    private static final int height = 600;
+    keyinput keyboard;
     public Renderer() throws Exception {
 	try {
 	    Display.setDisplayMode(new DisplayMode(800,600));
@@ -15,12 +24,15 @@ public class Renderer {
 	} catch (LWJGLException e) {
 	    e.printStackTrace();
 	}
- 
+//	GL11.glViewport(0, 0, width, height);
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	glOrtho(0, 800, 0, 600, 1, -1);
 	glMatrixMode(GL_MODELVIEW);
-    }
+	keyboard = new keyinput(this);
+	keyboard.start();
+
+	}
 
     public void blit(game g) {
     	
@@ -34,7 +46,6 @@ public class Renderer {
 	for(Block b : w.blocks) {
 	    drawBlock(b);
 	}
-
 	Display.update();
 	
     }
@@ -57,6 +68,11 @@ public class Renderer {
 
     public void close() {
 	Display.destroy();
+    }
+    public void camera(){
+    	glRotatef(xrot,1.0f,0.0f,0.0f);
+    	glRotatef(yrot,0.0f,1.0f,0.0f);
+    	glTranslated(-xpos,-ypos,-zpos);
     }
 
 }
