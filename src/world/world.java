@@ -7,7 +7,7 @@ import java.util.Scanner;
 //3dplat
 
 public class world {
-    ArrayList<Block> temp;
+
     Block[] blocks;
 
     public world() {}
@@ -16,34 +16,22 @@ public class world {
 
 	try {
 
-	    BufferedReader in = new BufferedReader(new FileReader("world.txt"));
-	    Scanner scan = new Scanner(in);
-	    temp = new ArrayList<Block>();
-	    while(scan.hasNextInt()){
-	    	try{temp.add(loadBlock(scan.nextInt(),scan.nextInt(),scan.nextInt(), scan.nextInt(),scan.nextInt(),scan.nextInt()));}
-		catch(Exception e){}
-	    }
-<<<<<<< HEAD
-
-	    blocks = (Block[])tmp.toArray();
-=======
-	    blocks = new Block[temp.size()];
-	    for(int i = 0; i<temp.size();i++){
-	    	blocks[i] = temp.get(i);
-	    }
+	    BufferedReader in = new BufferedReader(new FileReader("world/world.txt"));
 	    //Using a List here so file is only read once;
 	   //tmp will be transferred into blocks
-//	    List<Block> tmp = new ArrayList<Block>();
-//
-	//    String line = "";
-	  //  while((line = in.readLine()) != null) {
-		//tmp.add(loadBlock(line));
-	    //}
+	    List<Block> tmp = new ArrayList<Block>();
 
-	    //blocks = (Block[]) tmp.toArray();
+	    String line = "";
+	    while((line = in.readLine()) != null) {
+	    tmp.add(loadBlock(line));
+	    }
+	    blocks = new Block[tmp.size()];
+	    for(int i = 0; i<tmp.size();i++){
+	    	blocks[i] = tmp.get(i);
+	    }
 	    
 	    
->>>>>>> 3cfde8c45d552fcf505cdc4e8c243abce6c01dfb
+
 	    
 	    //Old image-based code
 	    /**BufferedImage in = ImageIO.read(new File(name));

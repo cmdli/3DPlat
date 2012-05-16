@@ -2,8 +2,8 @@
 
 public class entity {
 
-    vector loc;
-    vector size;
+    vector loc = new vector();
+    vector size = new vector();
 
     /*DATA STRUCTURE
      *move is a boolean array
