@@ -16,7 +16,6 @@ public class main {
     public void start() {
 	while(!Display.isCloseRequested()) {
 	    g.tick();
-	    System.out.print("Hi!");
 	}
 	g.close();
     }
