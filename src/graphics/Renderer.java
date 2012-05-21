@@ -1,14 +1,10 @@
 //3dplat
 
 import static org.lwjgl.opengl.GL11.*;
-
-<<<<<<< HEAD
-=======
 import org.lwjgl.LWJGLException;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
 
->>>>>>> 3cfde8c45d552fcf505cdc4e8c243abce6c01dfb
 public class Renderer {
     
     public Renderer() throws Exception {
@@ -21,8 +17,12 @@ public class Renderer {
  
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
-	glOrtho(0, 800, 0, 600, 1, -1);
+	glOrtho(0, 800, 0, 800, 0, -50);
 	glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity();
+
+	glEnable(GL_DEPTH_TEST);
+	glDepthFunc(GL_LEQUAL);
     }
 
     public void blit(game g) {
@@ -30,7 +30,9 @@ public class Renderer {
     	System.out.print("Blitting!");
 
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	glLoadIdentity();
 	glColor3f(0.5f,0.5f,1.0f);
+	glTranslatef(-400f,-400f,-25);
 
 	world w = g.cur;
 
