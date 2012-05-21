@@ -1,4 +1,5 @@
 import org.lwjgl.LWJGLException;
+import org.lwjgl.opengl.Display;
 
 //3dplat
 
@@ -15,7 +16,6 @@ public class main {
     public void start() {
 	while(!Display.isCloseRequested()) {
 	    g.tick();
-	    System.out.print("Hi!");
 	}
 	g.close();
     }
