@@ -1,9 +1,11 @@
 //3dplat
 
+package world;
+
 public class entity {
 
-    vector loc = new vector();
-    vector size = new vector();
+    public vector loc = new vector();
+    public vector size = new vector();
 
     /*DATA STRUCTURE
      *move is a boolean array
@@ -18,8 +20,8 @@ public class entity {
      *-4--Up-
      *-5--Down-
      */
-    boolean[] move;
-    vector vel;
+    public boolean[] move;
+    public vector vel;
 
     public entity() {
 
@@ -33,6 +35,12 @@ public class entity {
 	v1.x += v2.x*t;
 	v1.y += v2.y*t;
 	v1.z += v2.z*t;
+    }
+    
+    public void rotate(vector v1, vector rot) {
+        v1.x *= Math.cos(rot.x);
+        v1.y *= Math.cos(rot.y);
+        v1.z *= Math.cos(rot.z);
     }
 
     public void collide(entity e, Block[] b, double rest) {

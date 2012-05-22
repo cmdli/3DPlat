@@ -1,9 +1,12 @@
+//3dplat
+
+package world;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
-
-//3dplat
+import world.Block;
 
 public class world {
 
